@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
+    public static Deck Instance;
     public List<GameObject> playerDeck = new List<GameObject>();
     public List<GameObject> playerHand = new List<GameObject>();
     private GameObject[] GetAllCards()
     {
         return GameObject.FindGameObjectsWithTag("Card");
+    }
+    private void Awake()
+    {
+        Instance = this;
     }
     void Start()
     {
@@ -36,7 +41,8 @@ public class Deck : MonoBehaviour
             Shuffle(playerDeck);
             for(int i = 0; i < 5; i++)
             {
-                playerHand.Add(playerDeck[i]);
+                playerHand.Add(playerDeck[0]);
+                playerDeck.RemoveAt(0);
             }
         }
     }

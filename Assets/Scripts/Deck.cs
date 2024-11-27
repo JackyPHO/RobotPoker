@@ -5,30 +5,30 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
 
-    public List<Sprite> Deck;
+    public List<Sprite> MainDeck;
     private List<Sprite> Hand;
 
     public Deck()
     {
-        List<Sprite> Deck;
+        MainDeck = new List<Sprite>();
     }
     void Shuffle(List<Sprite> cards)
     {
         for (int i = (cards.Count-1); i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
-            GameObject tmp = cards[i];
+            Sprite tmp = cards[i];
             cards[i] = cards[j];
             cards[j] = tmp;
         }
     }
     void takeFive()
     {
-        Shuffle(Deck);
+        Shuffle(MainDeck);
         for (int i = 0; i < 5; i++)
         {
-            Hand.Add(Deck[0]);
-            Deck.RemoveAt(0);
+            Hand.Add(MainDeck[0]);
+            MainDeck.RemoveAt(0);
         }
     }
 }

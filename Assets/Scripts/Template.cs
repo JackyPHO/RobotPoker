@@ -5,27 +5,41 @@ using UnityEngine;
 
 public class Template : MonoBehaviour
 {
-    enum PartType {Head, Chest, Arm, Leg};
     Dictionary<string, Card> slots;
+    // Robot robot;
 
     // Start is called before the first frame update
     void Start()
     {
-        slots = new Dictionary<string, Card>();
-        slots.Add("Head", null);
-        slots.Add("Chest", null);
-        slots.Add("ArmL", null);
-        slots.Add("ArmR", null);
-        slots.Add("LegL", null);
-        slots.Add("LegR", null);   
+        // robot = new Robot();
+        slots = new Dictionary<string, Card>
+        {
+            { "Head", null },
+            { "Chest", null },
+            { "ArmL", null },
+            { "ArmR", null },
+            { "LegL", null },
+            { "LegR", null }
+        };
     }
 
-    private void TestCard(Card card, string slotTitle)
+    public void TestCard(Card card, string slotTitle)
     {
-        if (slotTitle.StartsWith(card.type))
+        if (slotTitle.StartsWith(card.GetCardType()))
         {
-            // add new part to robot
+            slots[slotTitle] = card;
         }
     }
 
+    public void GetRobot()
+    {
+        // return robot;
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

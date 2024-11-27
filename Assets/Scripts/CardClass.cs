@@ -8,6 +8,7 @@ public class Card : MonoBehaviour
     public int health;
     public int attack;
     public int speed;
+    
     void Start()
     {
         

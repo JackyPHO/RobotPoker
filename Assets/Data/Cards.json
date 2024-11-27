@@ -60,27 +60,27 @@
 			"speed": 3,
 			"attack": 0
 		},
-        "HeadA": {
+		"HeadA": {
 			"type": "Head",
 			"health": 2,
 			"speed": 1,
 			"attack": 3
 		},
-        "HeadB": {
+		"HeadB": {
 			"type": "Head",
 			"health": 3,
 			"speed": 2,
 			"attack": 1
 		},
-        "HeadC": {
+		"HeadC": {
 			"type": "Head",
 			"health": 1,
 			"speed": 3,
 			"attack": 2
 		}
 	},
-    "Chests":{
-        "Chest01": {
+	"Chests": {
+		"Chest01": {
 			"type": "Chest",
 			"health": 2,
 			"speed": 1,
@@ -140,27 +140,27 @@
 			"speed": 0,
 			"attack": 1
 		},
-        "ChestA": {
+		"ChestA": {
 			"type": "Chest",
 			"health": 4,
 			"speed": 1,
 			"attack": 2
 		},
-        "ChestB": {
+		"ChestB": {
 			"type": "Chest",
 			"health": 1,
 			"speed": 4,
 			"attack": 2
 		},
-        "ChestC": {
+		"ChestC": {
 			"type": "Chest",
 			"health": 2,
 			"speed": 1,
 			"attack": 4
 		}
-    },
-    "Arms":{
-        "Arm01": {
+	},
+	"Arms": {
+		"Arm01": {
 			"type": "Arm",
 			"health": 0,
 			"speed": 0,
@@ -220,103 +220,103 @@
 			"speed": 0,
 			"attack": 2
 		},
-        "ArmA": {
+		"ArmA": {
 			"type": "Arm",
 			"health": 1,
 			"speed": 2,
 			"attack": 3
 		},
-        "ArmB": {
+		"ArmB": {
 			"type": "Arm",
 			"health": 0,
 			"speed": 0,
 			"attack": 5
 		},
-        "ArmC": {
+		"ArmC": {
 			"type": "Arm",
 			"health": 2,
 			"speed": 2,
 			"attack": 2
 		}
-    },
-    "Legs":{
-        "Leg01": {
-			"type": "Leg",
-			"health": 2,
-			"speed": 1,
-			"attack": 1
-		},
-		"Leg02": {
+	},
+	"Legs": {
+		"Leg01": {
 			"type": "Leg",
 			"health": 1,
 			"speed": 2,
-			"attack": 1
+			"attack": 0
+		},
+		"Leg02": {
+			"type": "Leg",
+			"health": 2,
+			"speed": 1,
+			"attack": 0
 		},
 		"Leg03": {
 			"type": "Leg",
 			"health": 1,
 			"speed": 1,
-			"attack": 2
+			"attack": 1
 		},
 		"Leg04": {
 			"type": "Leg",
 			"health": 3,
 			"speed": 0,
-			"attack": 1
+			"attack": 0
 		},
 		"Leg05": {
 			"type": "Leg",
 			"health": 0,
-			"speed": 1,
-			"attack": 3
+			"speed": 3,
+			"attack": 0
 		},
 		"Leg06": {
-			"type": "Leg",
-			"health": 0,
-			"speed": 3,
-			"attack": 1
-		},
-		"Leg07": {
 			"type": "Leg",
 			"health": 2,
 			"speed": 2,
 			"attack": 0
 		},
-		"Leg08": {
-			"type": "Leg",
-			"health": 0,
-			"speed": 2,
-			"attack": 2
-		},
-		"Leg09": {
+		"Leg07": {
 			"type": "Leg",
 			"health": 3,
 			"speed": 1,
-			"attack": 2
+			"attack": 0
+		},
+		"Leg08": {
+			"type": "Leg",
+			"health": 1,
+			"speed": 3,
+			"attack": 0
+		},
+		"Leg09": {
+			"type": "Leg",
+			"health": 5,
+			"speed": 0,
+			"attack": 0
 		},
 		"Leg10": {
 			"type": "Leg",
-			"health": 4,
-			"speed": 0,
-			"attack": 1
-		},
-        "LegA": {
-			"type": "Leg",
-			"health": 4,
-			"speed": 1,
-			"attack": 2
-		},
-        "LegB": {
-			"type": "Leg",
 			"health": 1,
 			"speed": 4,
-			"attack": 2
+			"attack": 0
 		},
-        "LegC": {
+		"LegA": {
+			"type": "Leg",
+			"health": 3,
+			"speed": 3,
+			"attack": 0
+		},
+		"LegB": {
 			"type": "Leg",
 			"health": 2,
-			"speed": 1,
-			"attack": 4
+			"speed": 4,
+			"attack": 0
+		},
+		"LegC": {
+			"type": "Leg",
+			"health": 0,
+			"speed": 6,
+			"attack": 0
 		}
-    }
+	}
 }

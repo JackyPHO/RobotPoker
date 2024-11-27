@@ -1,0 +1,9 @@
+{
+    "Head01":{
+        "type":"Head",
+        "health":1,
+        "attack":1,
+        "speed":1
+    }
+
+}

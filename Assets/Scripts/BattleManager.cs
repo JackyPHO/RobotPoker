@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class BattleManager : MonoBehaviour
 {
-    public string type;
-    public int health;
-    public int attack;
-    public int speed;
+    // Start is called before the first frame update
     void Start()
     {
         
@@ -17,10 +14,5 @@ public class Card : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public string GetCardType()
-    {
-        return type;
     }
 }

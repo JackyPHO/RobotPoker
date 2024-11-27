@@ -7,12 +7,10 @@ public class Template : MonoBehaviour
 {
     enum PartType {Head, Chest, Arm, Leg};
     Dictionary<string, Card> slots;
-    Robot robot;
 
     // Start is called before the first frame update
     void Start()
     {
-        robot = new Robot();
         slots = new Dictionary<string, Card>();
         slots.Add("Head", null);
         slots.Add("Chest", null);
@@ -30,15 +28,4 @@ public class Template : MonoBehaviour
         }
     }
 
-    void GetRobot()
-    {
-        return robot;
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

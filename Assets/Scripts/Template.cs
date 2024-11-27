@@ -6,7 +6,6 @@ using UnityEngine;
 public class Template : MonoBehaviour
 {
     Dictionary<string, Card> slots;
-    // Robot robot;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +17,7 @@ public class Template : MonoBehaviour
             { "Chest", null },
             { "ArmL", null },
             { "ArmR", null },
-            { "LegL", null },
-            { "LegR", null }
+            { "Legs" , null }
         };
     }
 

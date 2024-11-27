@@ -5,13 +5,20 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    private Template player;
+    private Template npc;
+
+
+    public void SetPlayer(Template t)
     {
-        
+        this.player = t;
+    }
+    public void SetNPC(Template t)
+    {
+        this.npc = t;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BeginBattle()
     {
         
     }

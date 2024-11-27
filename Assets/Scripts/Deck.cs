@@ -4,47 +4,31 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
-    public static Deck Instance;
-    public List<GameObject> playerDeck = new List<GameObject>();
-    public List<GameObject> playerHand = new List<GameObject>();
-    private GameObject[] GetAllCards()
+
+    public List<Sprite> MainDeck;
+    private List<Sprite> Hand;
+
+    public Deck()
     {
-        return GameObject.FindGameObjectsWithTag("Card");
+        MainDeck = new List<Sprite>();
     }
-    private void Awake()
-    {
-        Instance = this;
-    }
-    void Start()
-    {
-        GameObject[] deck = GetAllCards();
-        foreach (GameObject items in deck)
-        {
-            playerDeck.Add(items);
-        }
-    }
-    void Shuffle(List<GameObject> cards)
+    void Shuffle(List<Sprite> cards)
     {
         for (int i = (cards.Count-1); i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
-            GameObject tmp = cards[i];
+            Sprite tmp = cards[i];
             cards[i] = cards[j];
             cards[j] = tmp;
         }
     }
-    // Update is called once per frame
-    void Update()
+    void takeFive()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        Shuffle(MainDeck);
+        for (int i = 0; i < 5; i++)
         {
-            Shuffle(playerDeck);
-            for(int i = 0; i < 5; i++)
-            {
-                playerHand.Add(playerDeck[0]);
-                playerDeck.RemoveAt(0);
-            }
+            Hand.Add(MainDeck[0]);
+            MainDeck.RemoveAt(0);
         }
     }
-
 }

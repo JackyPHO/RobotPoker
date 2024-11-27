@@ -7,12 +7,12 @@ public class Template : MonoBehaviour
 {
     enum PartType {Head, Chest, Arm, Leg};
     Dictionary<string, Card> slots;
-    Robot robot;
+    // Robot robot;
 
     // Start is called before the first frame update
     void Start()
     {
-        robot = new Robot();
+        // robot = new Robot();
         slots = new Dictionary<string, Card>();
         slots.Add("Head", null);
         slots.Add("Chest", null);
@@ -24,15 +24,15 @@ public class Template : MonoBehaviour
 
     private void TestCard(Card card, string slotTitle)
     {
-        if (slotTitle.StartsWith(card.type))
+        /* if (slotTitle.StartsWith(card.GetCardType()))
         {
             // add new part to robot
-        }
+        }*/ 
     }
 
     void GetRobot()
     {
-        return robot;
+        // return robot;
     }
 
 

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Template : MonoBehaviour
 {
-    enum PartType {Head, Chest, Arm, Leg};
     Dictionary<string, Card> slots;
     // Robot robot;
 
@@ -13,24 +12,26 @@ public class Template : MonoBehaviour
     void Start()
     {
         // robot = new Robot();
-        slots = new Dictionary<string, Card>();
-        slots.Add("Head", null);
-        slots.Add("Chest", null);
-        slots.Add("ArmL", null);
-        slots.Add("ArmR", null);
-        slots.Add("LegL", null);
-        slots.Add("LegR", null);   
-    }
-
-    private void TestCard(Card card, string slotTitle)
-    {
-        /* if (slotTitle.StartsWith(card.GetCardType()))
+        slots = new Dictionary<string, Card>
         {
-            // add new part to robot
-        }*/ 
+            { "Head", null },
+            { "Chest", null },
+            { "ArmL", null },
+            { "ArmR", null },
+            { "LegL", null },
+            { "LegR", null }
+        };
     }
 
-    void GetRobot()
+    public void TestCard(Card card, string slotTitle)
+    {
+        if (slotTitle.StartsWith(card.GetCardType()))
+        {
+            slots[slotTitle] = card;
+        }
+    }
+
+    public void GetRobot()
     {
         // return robot;
     }

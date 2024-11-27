@@ -8,6 +8,7 @@ public class Card : MonoBehaviour
     public int health;
     public int attack;
     public int speed;
+    
     void Start()
     {
         
@@ -19,7 +20,7 @@ public class Card : MonoBehaviour
         
     }
 
-    void GetCardType()
+    public GetCardType()
     {
         return type;
     }

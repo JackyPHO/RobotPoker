@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Template : MonoBehaviour
 {
-    Dictionary<Slot, Card> slots;
+    public Dictionary<Slot, Card> slots;
 
-    public Slot head = new Slot("Head");
-    public Slot chest = new Slot("Chest");
-    public Slot armL = new Slot("Arm");
-    public Slot armR = new Slot("Arm");
-    public Slot leg = new Slot("Leg");
+    Slot head = new Slot("Head");
+    Slot chest = new Slot("Chest");
+    Slot armL = new Slot("Arm");
+    Slot armR = new Slot("Arm");
+    Slot leg = new Slot("Leg");
 
 
     // Start is called before the first frame update
@@ -34,9 +35,13 @@ public class Template : MonoBehaviour
             slots[slot] = card;
         }
     }
-    public void GetRobot()
+    public Dictionary<Slot, Card> GetSlots()
     {
-        // return robot;
+        return slots;
+    }
+    public List<Card> GetCardData()
+    {
+        return slots.Values.ToList();
     }
 
 

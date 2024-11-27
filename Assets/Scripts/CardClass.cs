@@ -20,7 +20,7 @@ public class Card : MonoBehaviour
         
     }
 
-    public GetCardType()
+    public string GetCardType()
     {
         return type;
     }

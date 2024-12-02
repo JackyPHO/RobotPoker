@@ -8,17 +8,22 @@ public class Template : MonoBehaviour
 {
     public Dictionary<Slot, Card> slots;
 
-    Slot head = new Slot("Head");
-    Slot chest = new Slot("Chest");
-    Slot armL = new Slot("Arm");
-    Slot armR = new Slot("Arm");
-    Slot leg = new Slot("Leg");
+    public Slot head;
+    public Slot chest;
+    public Slot armL;
+    public Slot armR;
+    public Slot leg;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        // robot = new Robot();
+        head = GetComponent<Slot>();
+        chest = GetComponent<Slot>();
+        armL = GetComponent<Slot>();
+        armR = GetComponent<Slot>();
+        leg = GetComponent<Slot>();
+
         slots = new Dictionary<Slot, Card>
         {
             { head, null },

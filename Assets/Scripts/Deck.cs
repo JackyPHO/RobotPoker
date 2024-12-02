@@ -6,13 +6,14 @@ public class Deck : MonoBehaviour
 {
 
     public List<Sprite> MainDeck;
-    private List<Sprite> Hand;
+    public List<Sprite> Hand;
 
     public Deck()
     {
         MainDeck = new List<Sprite>();
     }
-    void Shuffle(List<Sprite> cards)
+
+    public void Shuffle(List<Sprite> cards)
     {
         for (int i = (cards.Count-1); i > 0; i--)
         {
@@ -22,8 +23,10 @@ public class Deck : MonoBehaviour
             cards[j] = tmp;
         }
     }
-    void takeFive()
+
+    public void takeFive()
     {
+        Hand.Clear();
         Shuffle(MainDeck);
         for (int i = 0; i < 5; i++)
         {

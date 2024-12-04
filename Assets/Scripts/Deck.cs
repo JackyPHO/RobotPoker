@@ -8,6 +8,7 @@ public class Deck : MonoBehaviour
 {
 
     public List<GameObject> FullDeck;
+    public List<GameObject> NPCDeck;
     public List<GameObject> UsedDeck;
     public List<GameObject> Hand;
     public List<GameObject> SavedCards;
@@ -19,11 +20,13 @@ public class Deck : MonoBehaviour
     private GameObject selectedCard;
 
     [SerializeField] Template playerTemplate;
+    [SerializeField] Template npcRobot;
 
     public Canvas myCanvas;
 
     void Start()
     {
+        NPCDeck = new List<GameObject>(FullDeck);
         ResetDeck();
         DrawHand();
     }
@@ -72,7 +75,7 @@ public class Deck : MonoBehaviour
     }
 
     public Template createNPCRobot(List<GameObject> cards){
-        Template npcRobot = new Template();
+        
         for (int i = 0; i < cards.Count; i++){
             GameObject card = cards[i];
             if (npcRobot.head.IsCompatible(card.GetComponent<Card>()))

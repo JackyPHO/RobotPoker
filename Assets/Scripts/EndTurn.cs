@@ -9,6 +9,7 @@ public class EndTurn : MonoBehaviour
     public Button instaLockinButton;
     private int turn = 0;
     public Deck deck;
+    public Template playerTemplate;
     [SerializeField] BattleManager batt;
 
     void Start()
@@ -25,8 +26,8 @@ public class EndTurn : MonoBehaviour
         }
         else{
             //call battle manager
-            // batt.SetPlayer();
-            // batt.SetPlayer();
+            batt.SetPlayer(playerTemplate);
+            batt.SetNPC(deck.createNPCRobot(deck.NPCDeck));
             batt.BeginBattle();
         }
     }

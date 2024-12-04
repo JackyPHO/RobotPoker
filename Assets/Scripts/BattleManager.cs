@@ -24,6 +24,8 @@ public class BattleManager : MonoBehaviour
     public void SetNPC(Template t)
     {
         this.npc = t;
+        npcDisplay.text = "NPC:\n" + "hp: " + npc.Health + "\nattack: " + npc.Attack + "\nSpeed: " + npc.Speed;
+
     }
 
     public string BeginBattle()
@@ -51,15 +53,20 @@ public class BattleManager : MonoBehaviour
             }
             trackerText += "\n" + whoIsSlower + " attacked for " + slowest.Attack;
             fHP -= slowest.Attack;
+            turnTracker.text = trackerText;
         }
         if (fHP <= 0)
         {
             trackerText += "winner = " + whoIsSlower;
+            turnTracker.text = trackerText;
+
             return whoIsSlower;
         }
         else
         {
             trackerText += "winner = " + whoIsFaster;
+            turnTracker.text = trackerText;
+
             return whoIsFaster;
         }
 

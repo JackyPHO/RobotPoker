@@ -6,29 +6,28 @@ using UnityEngine.UI;
 public class EndTurn : MonoBehaviour
 {
     public Button endButton;
+    public Button instaLockinButton;
     private int turn = 0;
     public Deck deck;
+    [SerializeField] BattleManager batt;
 
     void Start()
     {   
-        Button btn = endButton.GetComponent<Button>();
-		btn.onClick.AddListener(TaskOnClick);
+		endButton.GetComponent<Button>().onClick.AddListener(()=>{TaskOnClick(false);});
+		instaLockinButton.GetComponent<Button>().onClick.AddListener(()=>{TaskOnClick(true);});
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void TaskOnClick()
+    void TaskOnClick(bool skip)
     {
         turn += 1;
-        if (turn < 3){
+        if (turn < 3 && !skip){
             deck.DrawHand();
         }
         else{
             //call battle manager
+            // batt.SetPlayer();
+            // batt.SetPlayer();
+            batt.BeginBattle();
         }
     }
 

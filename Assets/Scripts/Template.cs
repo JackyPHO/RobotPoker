@@ -21,13 +21,6 @@ public class Template : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Slot[] tmp_slots = GetComponentsInChildren<Slot>();
-        head = tmp_slots[0];
-        chest = tmp_slots[1];
-        armL = tmp_slots[2];
-        armR = tmp_slots[3];
-        leg = tmp_slots[4];
-
         slots = new Dictionary<Slot, GameObject>
         {
             { head, noCard },
@@ -37,11 +30,20 @@ public class Template : MonoBehaviour
             { leg, noCard }
         };
     }
-    public void TestCard(Card card, Slot slot)
+    public bool TestCard(Card card, Slot slot)
     {
-        if (slot != null && slot.IsCompatible(card))
+        if (slot && slot.IsCompatible(card) && slots[slot] == noCard)
         {
-            slots[slot] = card.gameObject;
+            Debug.Log("returning true");
+            return true;
+        }
+        return false;
+    }
+    public void SetCard(GameObject card, Slot slot)
+    {
+        if (TestCard(card.GetComponent<Card>(), slot))
+        {
+            slots[slot] = card;
         }
     }
     public Dictionary<Slot, GameObject> GetSlots()

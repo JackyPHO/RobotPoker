@@ -5,20 +5,31 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
 
-    public List<Sprite> MainDeck;
-    public List<Sprite> Hand;
+    public List<GameObject> FullDeck;
+    public List<GameObject> UsedDeck;
+    public List<GameObject> Hand;
+    public List<GameObject> DisplayedCards;
+    public List<GameObject> SavedCards;
 
-    public Deck()
+    public Canvas myCanvas;
+
+    void Start()
     {
-        MainDeck = new List<Sprite>();
+        ResetDeck();
+        DrawHand();
+    }
+    void ResetDeck()
+    {
+        UsedDeck = new List<GameObject>(FullDeck);
+        Shuffle(UsedDeck);
     }
 
-    public void Shuffle(List<Sprite> cards)
+    public void Shuffle(List<GameObject> cards)
     {
-        for (int i = (cards.Count-1); i > 0; i--)
+        for (int i = (cards.Count - 1); i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
-            Sprite tmp = cards[i];
+            GameObject tmp = cards[i];
             cards[i] = cards[j];
             cards[j] = tmp;
         }
@@ -26,12 +37,26 @@ public class Deck : MonoBehaviour
 
     public void takeFive()
     {
-        Hand.Clear();
-        Shuffle(MainDeck);
         for (int i = 0; i < 5; i++)
         {
-            Hand.Add(MainDeck[0]);
-            MainDeck.RemoveAt(0);
+            Hand.Add(UsedDeck[0]);
+            UsedDeck.RemoveAt(0);
+        }
+    }
+    public void DrawHand()
+    {
+        foreach (var cardObj in DisplayedCards)
+        {
+            Destroy(cardObj);
+        }
+        takeFive();
+        int offset = -100;
+        foreach (var card in Hand)
+        {
+            GameObject tmpCard = Instantiate(card, myCanvas.transform);
+            tmpCard.transform.localPosition = new Vector2(offset, 100);
+            DisplayedCards.Add(tmpCard);
+            offset += 100;
         }
     }
 }

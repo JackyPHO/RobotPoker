@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Template : MonoBehaviour
 {
-    public Dictionary<Slot, Card> slots;
+    public Dictionary<Slot, GameObject> slots;
 
     public Slot head;
     public Slot chest;
@@ -15,45 +15,54 @@ public class Template : MonoBehaviour
     public Slot armR;
     public Slot leg;
 
+    [SerializeField] GameObject noCard;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        head = GetComponent<Slot>();
-        chest = GetComponent<Slot>();
-        armL = GetComponent<Slot>();
-        armR = GetComponent<Slot>();
-        leg = GetComponent<Slot>();
+        Slot[] tmp_slots = GetComponentsInChildren<Slot>();
+        head = tmp_slots[0];
+        chest = tmp_slots[1];
+        armL = tmp_slots[2];
+        armR = tmp_slots[3];
+        leg = tmp_slots[4];
 
-        slots = new Dictionary<Slot, Card>
+        slots = new Dictionary<Slot, GameObject>
         {
-            { head, null },
-            { chest, null },
-            { armL, null },
-            { armR, null },
-            { leg, null }
+            { head, noCard },
+            { chest, noCard },
+            { armL, noCard },
+            { armR, noCard },
+            { leg, noCard }
         };
     }
     public void TestCard(Card card, Slot slot)
     {
         if (slot != null && slot.IsCompatible(card))
         {
-            slots[slot] = card;
+            slots[slot] = card.gameObject;
         }
     }
-    public Dictionary<Slot, Card> GetSlots()
+    public Dictionary<Slot, GameObject> GetSlots()
     {
         return slots;
     }
     public List<Card> GetCardData()
     {
-        return slots.Values.ToList();
+        List<GameObject> obj_list = slots.Values.ToList();
+        List<Card> retList = new();
+        foreach (var obj in obj_list)
+        {
+            retList.Add(obj.GetComponent<Card>());
+        }
+        return retList;
     }
     public int Speed
     {
         get
         {
-            List<Card> vs = slots.Values.ToList();
+            List<Card> vs = GetCardData();
             int speed = 0;
             vs.ForEach((card) =>
             {
@@ -66,7 +75,7 @@ public class Template : MonoBehaviour
     {
         get
         {
-            List<Card> vs = slots.Values.ToList();
+            List<Card> vs = GetCardData();
             int health = 0;
             vs.ForEach((card) =>
             {
@@ -79,7 +88,7 @@ public class Template : MonoBehaviour
     {
         get
         {
-            List<Card> vs = slots.Values.ToList();
+            List<Card> vs = GetCardData();
             int atk = 0;
             vs.ForEach((card) =>
             {
@@ -90,18 +99,15 @@ public class Template : MonoBehaviour
     }
 
 
-    public bool isComplete(){
-        if (slots.ContainsValue(null)){
+    public bool isComplete()
+    {
+        if (slots.ContainsValue(null))
+        {
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

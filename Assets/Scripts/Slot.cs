@@ -18,7 +18,7 @@ public class Slot : MonoBehaviour, IDropHandler
     }
     public bool IsCompatible(Card card)
     {
-        return slotName.StartsWith(card.GetCardType());
+        return slotName.StartsWith(card.GetCardType()) || card.GetCardType() == "all";
     }
     public void OnDrop(PointerEventData pointerEventData)
     {

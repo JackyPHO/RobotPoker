@@ -6,21 +6,21 @@ public class Card : MonoBehaviour
 {
     public string type;
     public int health;
-    public int attack;
     public int speed;
+    public int attack;
 
     private Vector3 screenPoint;
     private Vector3 offset;
-    
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnMouseDown()

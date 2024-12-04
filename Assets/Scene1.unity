@@ -122,6 +122,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &186123714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 186123716}
+  - component: {fileID: 186123715}
+  m_Layer: 0
+  m_Name: DeckManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &186123715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186123714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049db3ea721b28f45b0889d69890bd0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FullDeck:
+  - {fileID: 7258447508925562783, guid: 31d2fa87a7f7be44590066d9c345e8ef, type: 3}
+  - {fileID: 7258447508925562783, guid: 7d49e41569fa2f847a8aac415229c295, type: 3}
+  - {fileID: 7258447508925562783, guid: ea737e7705974254abc30b12b1b7a450, type: 3}
+  - {fileID: 7258447508925562783, guid: 10fe757960fbd784db549986d1e1206a, type: 3}
+  - {fileID: 7258447508925562783, guid: 4572101e4a0dab6438587bdab9478314, type: 3}
+  UsedDeck: []
+  Hand: []
+  SavedCards: []
+--- !u!4 &186123716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186123714}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 437.7199, y: 265.26215, z: -3.3480878}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &204590762
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &208265423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,3 +1221,4 @@ SceneRoots:
   - {fileID: 2083437160}
   - {fileID: 1331961728}
   - {fileID: 294931877}
+  - {fileID: 186123716}

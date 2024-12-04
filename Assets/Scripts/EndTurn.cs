@@ -25,7 +25,7 @@ public class EndTurn : MonoBehaviour
     {
         turn += 1;
         if (turn < 3){
-            deck.takeFive();
+            deck.DrawHand();
         }
         else{
             //call battle manager

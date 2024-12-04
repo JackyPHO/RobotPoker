@@ -11,7 +11,8 @@ public class Template : MonoBehaviour
 
     public Slot head;
     public Slot chest;
-    public Slot arm;
+    public Slot armL;
+    public Slot armR;
     public Slot leg;
 
 
@@ -20,14 +21,16 @@ public class Template : MonoBehaviour
     {
         head = GetComponent<Slot>();
         chest = GetComponent<Slot>();
-        arm = GetComponent<Slot>();
+        armL = GetComponent<Slot>();
+        armR = GetComponent<Slot>();
         leg = GetComponent<Slot>();
 
         slots = new Dictionary<Slot, Card>
         {
             { head, null },
             { chest, null },
-            { arm, null },
+            { armL, null },
+            { armR, null },
             { leg, null }
         };
     }

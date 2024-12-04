@@ -19,12 +19,29 @@ public class BattleManager : MonoBehaviour
     public void SetPlayer(Template t)
     {
         this.player = t;
-        playerDisplay.text = "Player:\n" + "hp: " + player.Health + "\nattack: " + player.Attack + "\nSpeed: " + player.Speed;
+        if (t)
+        {
+            playerDisplay.text = "Player:\n" + "hp: " + player.Health + "\nattack: " + player.Attack + "\nSpeed: " + player.Speed;
+
+        }
+        else
+        {
+            playerDisplay.text = "player stats here";
+        }
     }
     public void SetNPC(Template t)
     {
         this.npc = t;
-        npcDisplay.text = "NPC:\n" + "hp: " + npc.Health + "\nattack: " + npc.Attack + "\nSpeed: " + npc.Speed;
+        if (t)
+        {
+            npcDisplay.text = "NPC:\n" + "hp: " + npc.Health + "\nattack: " + npc.Attack + "\nSpeed: " + npc.Speed;
+
+        }
+        else
+        {
+            npcDisplay.text = "npc stats here";
+
+        }
 
     }
 
@@ -50,21 +67,26 @@ public class BattleManager : MonoBehaviour
             {
                 trackerText += "\n" + whoIsFaster + " attacked for " + fastest.Attack;
                 sHP -= fastest.Attack;
+                turnTracker.text = trackerText;
+
             }
+            if (fHP < 0 || sHP < 0) { break; }
             trackerText += "\n" + whoIsSlower + " attacked for " + slowest.Attack;
             fHP -= slowest.Attack;
             turnTracker.text = trackerText;
+            if (fHP < 0 || sHP < 0) { break; }
+
         }
         if (fHP <= 0)
         {
-            trackerText += "winner = " + whoIsSlower;
+            trackerText += "\nwinner = " + whoIsSlower;
             turnTracker.text = trackerText;
 
             return whoIsSlower;
         }
         else
         {
-            trackerText += "winner = " + whoIsFaster;
+            trackerText += "\nwinner = " + whoIsFaster;
             turnTracker.text = trackerText;
 
             return whoIsFaster;

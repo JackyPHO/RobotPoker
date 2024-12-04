@@ -30,8 +30,27 @@ public class Deck : MonoBehaviour
         ResetDeck();
         DrawHand();
     }
-    void ResetDeck()
+    public void ResetDeck()
     {
+        selectedCard = null;
+        playerTemplate.ClearSlots();
+        npcRobot.ClearSlots();
+        for (int i = 0; i < Hand.Count; i++)
+        {
+            if (Hand[i] != NO_CARD)
+            {
+                Destroy(Hand[i]);
+            }
+        }
+        for (int i = 0; i < SavedCards.Count; i++)
+        {
+            if (SavedCards[i] != NO_CARD)
+            {
+                Destroy(SavedCards[i]);
+            }
+        }
+        Hand.Clear();
+        SavedCards.Clear();
         UsedDeck = new List<GameObject>(FullDeck);
         Shuffle(NPCDeck);
         Shuffle(UsedDeck);
@@ -66,8 +85,10 @@ public class Deck : MonoBehaviour
     public void DrawHand()
     {
         selectedCard = null;
-        for(int i = 0 ; i < Hand.Count; i++){
-            if(Hand[i] != NO_CARD){
+        for (int i = 0; i < Hand.Count; i++)
+        {
+            if (Hand[i] != NO_CARD)
+            {
                 Destroy(Hand[i]);
             }
         }
@@ -75,9 +96,11 @@ public class Deck : MonoBehaviour
         takeFive();
     }
 
-    public Template createNPCRobot(List<GameObject> cards){
-        
-        for (int i = 0; i < cards.Count; i++){
+    public Template createNPCRobot(List<GameObject> cards)
+    {
+
+        for (int i = 0; i < cards.Count; i++)
+        {
             GameObject card = cards[i];
             if (npcRobot.head.IsCompatible(card.GetComponent<Card>()))
             {

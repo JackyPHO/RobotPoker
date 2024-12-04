@@ -21,6 +21,10 @@ public class Template : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       ClearSlots();
+    }
+    public void ClearSlots()
+    {
         slots = new Dictionary<Slot, GameObject>
         {
             { head, noCard },
@@ -29,6 +33,7 @@ public class Template : MonoBehaviour
             { armR, noCard },
             { leg, noCard }
         };
+
     }
     public bool TestCard(Card card, Slot slot)
     {

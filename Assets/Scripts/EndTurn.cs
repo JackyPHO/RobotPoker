@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,23 +14,49 @@ public class EndTurn : MonoBehaviour
     [SerializeField] BattleManager batt;
 
     void Start()
-    {   
-		endButton.GetComponent<Button>().onClick.AddListener(()=>{TaskOnClick(false);});
-		instaLockinButton.GetComponent<Button>().onClick.AddListener(()=>{TaskOnClick(true);});
+    {
+        endButton.GetComponent<Button>().onClick.AddListener(() => { TaskOnClick(false); });
+        instaLockinButton.GetComponent<Button>().onClick.AddListener(() => { TaskOnClick(true); });
     }
 
     void TaskOnClick(bool skip)
     {
         turn += 1;
-        if (turn < 3 && !skip){
+        if (turn < 3 && !skip)
+        {
             deck.DrawHand();
         }
-        else{
+        else
+        {
             //call battle manager
             batt.SetPlayer(playerTemplate);
             batt.SetNPC(deck.createNPCRobot(deck.NPCDeck));
-            batt.BeginBattle();
+            string win = batt.BeginBattle();
+            if (win == "player")
+            {
+
+            }
+            else
+            {
+
+            }
+            endButton.GetComponentInChildren<TMP_Text>().text = "Next round";
+            endButton.onClick.RemoveAllListeners();
+            endButton.GetComponent<Button>().onClick.AddListener(() => { DoResetStuff(); });
+
         }
+    }
+
+    void DoResetStuff()
+    {
+        endButton.GetComponentInChildren<TMP_Text>().text = "Discard/Draw";
+        endButton.onClick.RemoveAllListeners();
+        endButton.GetComponent<Button>().onClick.AddListener(() => { TaskOnClick(false); });
+        deck.ResetDeck();
+        deck.DrawHand();
+        turn = 0;
+        batt.SetPlayer(null);
+        batt.SetNPC(null);
     }
 
 

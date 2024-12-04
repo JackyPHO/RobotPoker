@@ -71,6 +71,34 @@ public class Deck : MonoBehaviour
         takeFive();
     }
 
+    public Template createNPCRobot(List<GameObject> cards){
+        Template npcRobot = new Template();
+        for (int i = 0; i < cards.Count; i++){
+            GameObject card = cards[i];
+            if (npcRobot.head.IsCompatible(card.GetComponent<Card>()))
+            {
+                npcRobot.SetCard(card, npcRobot.head);
+            }
+            if (npcRobot.chest.IsCompatible(card.GetComponent<Card>()))
+            {
+                npcRobot.SetCard(card, npcRobot.chest);
+            }
+            if (npcRobot.leg.IsCompatible(card.GetComponent<Card>()))
+            {
+                npcRobot.SetCard(card, npcRobot.leg);
+            }
+            if (npcRobot.armR.IsCompatible(card.GetComponent<Card>()))
+            {
+                npcRobot.SetCard(card, npcRobot.armR);
+            }
+            if (npcRobot.armL.IsCompatible(card.GetComponent<Card>()))
+            {
+                npcRobot.SetCard(card, npcRobot.armL);
+            }
+        }
+        return npcRobot;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

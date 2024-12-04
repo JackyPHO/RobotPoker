@@ -105,11 +105,11 @@ public class Template : MonoBehaviour
     {
         if (slots.ContainsValue(null))
         {
-            return true;
+            return false;
         }
         else
         {
-            return false;
+            return true;
         }
     }
 }

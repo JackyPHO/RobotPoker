@@ -1,0 +1,146 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "exports/movement-testing.json",
+    "expandedProjectPaths": [
+        "exports",
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "clone1.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 3072,
+                "y": 255.66666666666663
+            }
+        },
+        "exports/clone1.json": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 2205,
+                "y": -474
+            }
+        },
+        "exports/clone1.json#placeholder": {
+            "scaleInDock": 1
+        },
+        "exports/movement-testing.json": {
+            "scale": 0.40078125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 512.748538011696,
+                "y": -770.9941520467837
+            }
+        },
+        "exports/movement-testing.json#placeholder": {
+            "scaleInDock": 1
+        },
+        "exports/screenlock-test.json": {
+            "expandedObjectLayers": [
+                3,
+                4
+            ],
+            "scale": 0.25,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 1146,
+                "y": 504
+            }
+        },
+        "exports/screenlock-test.json#placeholder": {
+            "scaleInDock": 1
+        },
+        "movement-testing.TMX": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 0.40078125,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 512.748538011696,
+                "y": -773.4892787524368
+            }
+        },
+        "movement-testing.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 512.6666666666667,
+                "y": -767.9999999999999
+            }
+        },
+        "placeholder default.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "placeholder.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "placeholder.xml": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "screenlock-test.tmx": {
+            "expandedObjectLayers": [
+                3,
+                2,
+                4
+            ],
+            "scale": 0.33,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 716.6666666666666,
+                "y": -142.4242424242425
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Users/Alex Leghart/Documents/GitHub/zero_out/src/assets/tiled/exports",
+    "last.externalTilesetPath": "C:/Users/Alex Leghart/Documents/GitHub/zero_out/src/assets/tiled",
+    "last.imagePath": "C:/Users/Alex/Documents/GitHub/zero_out/lib/aesprite",
+    "map.fixedSize": false,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "clone1.tmx",
+        "placeholder.xml",
+        "movement-testing.TMX",
+        "exports/clone1.json",
+        "exports/movement-testing.json"
+    ],
+    "project": "zero_out.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "exports/screenlock-test.json",
+        "exports/movement-testing.json",
+        "exports/clone1.json",
+        "movement-testing.TMX",
+        "placeholder.xml",
+        "clone1.tmx",
+        "movement-testing.tmx",
+        "placeholder.tsx",
+        "placeholder default.tsx"
+    ],
+    "tileset.lastUsedFilter": "All Files (*)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    },
+    "tileset.type": 0
+}

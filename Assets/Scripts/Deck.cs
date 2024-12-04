@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Properties;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Deck : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Deck : MonoBehaviour
     public List<GameObject> UsedDeck;
     public List<GameObject> Hand;
     public List<GameObject> SavedCards;
+    public bool battleMode = false;
 
     public GameObject NO_CARD;
 
@@ -76,7 +78,7 @@ public class Deck : MonoBehaviour
             GameObject tmpCard = Instantiate(UsedDeck[0], myCanvas.transform);
             Hand.Add(tmpCard);
             tmpCard.transform.localPosition = new Vector3(offset, -400, -2);
-            tmpCard.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+            tmpCard.transform.localScale = new Vector3(15f, 15f, 1f);
             offset += 200;
 
             UsedDeck.RemoveAt(0);
@@ -102,83 +104,86 @@ public class Deck : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
         {
             GameObject card = cards[i];
-            if (npcRobot.head.IsCompatible(card.GetComponent<Card>()))
+            Slot found = null;
+            foreach (var slot in npcRobot.slots)
             {
-                npcRobot.SetCard(card, npcRobot.head);
+                if (found != null) { continue; }
+                Debug.Log("slotkey:" + slot.Key);
+
+                found = npcRobot.TestCard(card.GetComponent<Card>(), slot.Key) ? slot.Key : null;
             }
-            if (npcRobot.chest.IsCompatible(card.GetComponent<Card>()))
+            if (found != null)
             {
-                npcRobot.SetCard(card, npcRobot.chest);
+                GameObject tmp_card = Instantiate(card, myCanvas.transform);
+                npcRobot.SetCard(tmp_card, found);
+                SavedCards.Add(tmp_card);
+
+                tmp_card.transform.position = new Vector2(found.transform.position.x, found.transform.position.y);
+                tmp_card.transform.localScale = new Vector3(15f, 15f, 1f);
+
             }
-            if (npcRobot.leg.IsCompatible(card.GetComponent<Card>()))
-            {
-                npcRobot.SetCard(card, npcRobot.leg);
-            }
-            if (npcRobot.armR.IsCompatible(card.GetComponent<Card>()))
-            {
-                npcRobot.SetCard(card, npcRobot.armR);
-            }
-            if (npcRobot.armL.IsCompatible(card.GetComponent<Card>()))
-            {
-                npcRobot.SetCard(card, npcRobot.armL);
-            }
+
         }
         return npcRobot;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (!battleMode)
         {
-            cardSelector.transform.localPosition = new Vector2(-300, -400);
-            selectedCard = Hand[0];
-            Debug.Log("card is:" + selectedCard.GetComponent<Card>().name);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            cardSelector.transform.localPosition = new Vector2(-100, -400);
-            selectedCard = Hand[1];
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            cardSelector.transform.localPosition = new Vector2(100, -400);
-            selectedCard = Hand[2];
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            cardSelector.transform.localPosition = new Vector2(300, -400);
-            selectedCard = Hand[3];
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            cardSelector.transform.localPosition = new Vector2(500, -400);
-            selectedCard = Hand[4];
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && selectedCard != null && selectedCard != NO_CARD)
-        {
-            Slot found = null;
-
-            foreach (var slot in playerTemplate.slots)
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                if (found != null) { continue; }
-                Debug.Log("slotkey:" + slot.Key);
-
-                found = playerTemplate.TestCard(selectedCard.GetComponent<Card>(), slot.Key) ? slot.Key : null;
+                cardSelector.transform.localPosition = new Vector2(-300, -400);
+                selectedCard = Hand[0];
+                Debug.Log("card is:" + selectedCard.GetComponent<Card>().name);
             }
-            if (found != null)
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Debug.Log("found a place for the card to go.");
-                playerTemplate.SetCard(selectedCard, found);
-                int index = Hand.IndexOf(selectedCard);
-                Hand[index] = NO_CARD;
-                SavedCards.Add(selectedCard);
+                cardSelector.transform.localPosition = new Vector2(-100, -400);
+                selectedCard = Hand[1];
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                cardSelector.transform.localPosition = new Vector2(100, -400);
+                selectedCard = Hand[2];
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                cardSelector.transform.localPosition = new Vector2(300, -400);
+                selectedCard = Hand[3];
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                cardSelector.transform.localPosition = new Vector2(500, -400);
+                selectedCard = Hand[4];
+            }
 
-                selectedCard.transform.position = new Vector2(found.transform.position.x, found.transform.position.y);
-                selectedCard = null;
-                cardSelector.transform.position = new Vector2(10000, 100000);
+            if (Input.GetKeyDown(KeyCode.E) && selectedCard != null && selectedCard != NO_CARD)
+            {
+                Slot found = null;
+
+                foreach (var slot in playerTemplate.slots)
+                {
+                    if (found != null) { continue; }
+                    Debug.Log("slotkey:" + slot.Key);
+
+                    found = playerTemplate.TestCard(selectedCard.GetComponent<Card>(), slot.Key) ? slot.Key : null;
+                }
+                if (found != null)
+                {
+                    Debug.Log("found a place for the card to go.");
+                    playerTemplate.SetCard(selectedCard, found);
+                    int index = Hand.IndexOf(selectedCard);
+                    Hand[index] = NO_CARD;
+                    SavedCards.Add(selectedCard);
+
+                    selectedCard.transform.position = new Vector2(found.transform.position.x, found.transform.position.y);
+                    selectedCard = null;
+                    cardSelector.transform.position = new Vector2(10000, 100000);
+                }
             }
         }
+
 
     }
 }

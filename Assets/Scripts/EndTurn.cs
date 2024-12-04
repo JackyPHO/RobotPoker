@@ -21,13 +21,13 @@ public class EndTurn : MonoBehaviour
 
     void TaskOnClick(bool skip)
     {
-        turn += 1;
-        if (turn < 3 && !skip)
+        if (turn < 2 && !skip)
         {
             deck.DrawHand();
-        }
+        } 
         else
         {
+            deck.battleMode = true;
             //call battle manager
             batt.SetPlayer(playerTemplate);
             batt.SetNPC(deck.createNPCRobot(deck.NPCDeck));
@@ -45,16 +45,20 @@ public class EndTurn : MonoBehaviour
             endButton.GetComponent<Button>().onClick.AddListener(() => { DoResetStuff(); });
 
         }
+        turn += 1;
     }
 
     void DoResetStuff()
     {
+
         endButton.GetComponentInChildren<TMP_Text>().text = "Discard/Draw";
         endButton.onClick.RemoveAllListeners();
         endButton.GetComponent<Button>().onClick.AddListener(() => { TaskOnClick(false); });
+        deck.battleMode = false;
         deck.ResetDeck();
         deck.DrawHand();
         turn = 0;
+        batt.clearBattleText();
         batt.SetPlayer(null);
         batt.SetNPC(null);
     }

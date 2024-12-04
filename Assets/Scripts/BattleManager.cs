@@ -44,6 +44,10 @@ public class BattleManager : MonoBehaviour
         }
 
     }
+    public void clearBattleText()
+    {
+        turnTracker.text = "";
+    }
 
     public string BeginBattle()
     {
@@ -58,35 +62,28 @@ public class BattleManager : MonoBehaviour
             extraTurns++;
             tmpSpeed /= 2;
         }
-        trackerText = "faster is " + whoIsFaster + "\nwill move " + extraTurns + " per one move of " + whoIsSlower;
-        turnTracker.text = trackerText;
+        turnTracker.text = "" + whoIsFaster + " moves first.";
         int fHP = fastest.Health, sHP = slowest.Health;
         while (fHP > 0 && sHP > 0)
         {
             for (int i = 0; i < extraTurns; i++)
             {
-                trackerText += "\n" + whoIsFaster + " attacked for " + fastest.Attack;
+                turnTracker.text = turnTracker.text + "\n" + whoIsFaster + " attacked for " + fastest.Attack;
                 sHP -= fastest.Attack;
-                turnTracker.text = trackerText;
-
             }
-            if (fHP < 0 || sHP < 0) { break; }
-            trackerText += "\n" + whoIsSlower + " attacked for " + slowest.Attack;
+            turnTracker.text = turnTracker.text + "\n" + whoIsSlower + " attacked for " + slowest.Attack;
             fHP -= slowest.Attack;
-            turnTracker.text = trackerText;
-            if (fHP < 0 || sHP < 0) { break; }
-
         }
         if (fHP <= 0)
         {
-            trackerText += "\nwinner = " + whoIsSlower;
+            trackerText = turnTracker.text + "\nwinner = " + whoIsSlower;
             turnTracker.text = trackerText;
 
             return whoIsSlower;
         }
         else
         {
-            trackerText += "\nwinner = " + whoIsFaster;
+            trackerText = turnTracker.text + "\nwinner = " + whoIsFaster;
             turnTracker.text = trackerText;
 
             return whoIsFaster;

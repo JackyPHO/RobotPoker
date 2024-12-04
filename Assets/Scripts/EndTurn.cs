@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EndPhase : MonoBehaviour
+public class EndTurn : MonoBehaviour
 {
     public Button endButton;
-    private int phase = 0;
+    private int turn = 0;
     public Deck deck;
 
     void Start()
@@ -23,8 +23,8 @@ public class EndPhase : MonoBehaviour
 
     void TaskOnClick()
     {
-        phase += 1;
-        if (phase < 3){
+        turn += 1;
+        if (turn < 3){
             deck.takeFive();
         }
         else{

@@ -90,6 +90,14 @@ public class Template : MonoBehaviour
     }
 
 
+    public bool isComplete(){
+        if (slots.ContainsValue(null)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     // Update is called once per frame
     void Update()

@@ -33,6 +33,7 @@ public class Deck : MonoBehaviour
     void ResetDeck()
     {
         UsedDeck = new List<GameObject>(FullDeck);
+        Shuffle(NPCDeck);
         Shuffle(UsedDeck);
     }
 

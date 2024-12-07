@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using System.Threading;
 
 public class BattleManager : MonoBehaviour
 {
@@ -29,10 +28,13 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private AudioClip Dong;
     [SerializeField]
+    private AudioClip Bell;
+    [SerializeField]
     private AudioClip Hit;
 
 
-    void Start(){
+    void Start()
+    {
         ourAudioSource = GetComponent<AudioSource>();
     }
 
@@ -69,7 +71,7 @@ public class BattleManager : MonoBehaviour
         turnTracker.text = "";
     }
 
-    public string BeginBattle()
+    public IEnumerator BeginBattle()
     {
         // ---------- Battle calcs ----------
 
@@ -77,49 +79,53 @@ public class BattleManager : MonoBehaviour
         string whoIsSlower = whoIsFaster == "Player" ? "Joe" : "Player";
         int tmpSpeed = fastest.Speed;
         int extraTurns = 0;
-        while (tmpSpeed > slowest.Speed)
+        while (tmpSpeed >= slowest.Speed)
         {
             extraTurns++;
             tmpSpeed /= 2;
         }
         turnTracker.text = "" + whoIsFaster + " moves first.";
         int fHP = fastest.Health, sHP = slowest.Health;
-        ourAudioSource.PlayOneShot(Slash);
-        Thread.Sleep(300);
-        ourAudioSource.PlayOneShot(Bang);
-        Thread.Sleep(300);
-        ourAudioSource.PlayOneShot(Clang);
-        Thread.Sleep(300);
-        ourAudioSource.PlayOneShot(Hit);
-        Thread.Sleep(300);
-        ourAudioSource.PlayOneShot(Woosh);
-        Thread.Sleep(300);
-        ourAudioSource.PlayOneShot(Dong);
-        Thread.Sleep(500);
+
+        ourAudioSource.PlayOneShot(Bell);
+
+        yield return new WaitForSeconds(1f);
         while (fHP > 0 && sHP > 0)
         {
             for (int i = 0; i < extraTurns; i++)
             {
                 turnTracker.text = turnTracker.text + "\n" + whoIsFaster + " attacked for " + fastest.Attack;
                 sHP -= fastest.Attack;
+                ourAudioSource.PlayOneShot(Slash);
+                yield return new WaitForSeconds(0.5f);
+                if (sHP <= 0)
+                {
+                    trackerText = turnTracker.text + "\nwinner = " + whoIsFaster;
+                    turnTracker.text = trackerText;
+                    ourAudioSource.PlayOneShot(Clang);
+                    yield return new WaitForSeconds(0.3f);
+                    yield break;
+                }
+
             }
+            yield return new WaitForSeconds(0.5f);
             turnTracker.text = turnTracker.text + "\n" + whoIsSlower + " attacked for " + slowest.Attack;
             fHP -= slowest.Attack;
-        }
-        if (fHP <= 0)
-        {
-            trackerText = turnTracker.text + "\nwinner = " + whoIsSlower;
-            turnTracker.text = trackerText;
+            ourAudioSource.PlayOneShot(Bang);
+            yield return new WaitForSeconds(0.3f);
+            if (fHP <= 0)
+            {
 
-            return whoIsSlower;
-        }
-        else
-        {
-            trackerText = turnTracker.text + "\nwinner = " + whoIsFaster;
-            turnTracker.text = trackerText;
+                trackerText = turnTracker.text + "\nwinner = " + whoIsSlower;
+                turnTracker.text = trackerText;
+                ourAudioSource.PlayOneShot(Hit);
+                yield return new WaitForSeconds(0.3f);
+                yield break;
+            }
+            yield return new WaitForSeconds(0.5f);
 
-            return whoIsFaster;
         }
+
 
 
 

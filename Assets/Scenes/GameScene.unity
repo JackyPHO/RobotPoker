@@ -160,6 +160,7 @@ MonoBehaviour:
   Bang: {fileID: 8300000, guid: 44238bac7e6ec9b42a56e0d4d19dd2fa, type: 3}
   Clang: {fileID: 8300000, guid: 5c7cff00ff33da24ea5a8274d19c59d1, type: 3}
   Dong: {fileID: 8300000, guid: 715fd1e479a98ef4ca1db88dd5afe49c, type: 3}
+  Bell: {fileID: 8300000, guid: c94a014195f318b4dbb0e3b53b9c7529, type: 3}
   Hit: {fileID: 8300000, guid: 674560878fa22594b8fcdd904feedb36, type: 3}
 --- !u!4 &81673404
 Transform:
@@ -188,7 +189,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -324,8 +325,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 811, y: -239}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 785, y: -260}
+  m_SizeDelta: {x: 298.47, y: 206.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128861557
 MonoBehaviour:
@@ -909,7 +910,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Discard/Draw
+  m_text: Draw new cards
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1858,7 +1859,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 155, y: -509}
+  m_AnchoredPosition: {x: 458.21, y: -536}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1449392899
@@ -1881,7 +1882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: press 1-5 to select and E to submit
+  m_text: click on a part to select it and press E to add it to your bot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1908,8 +1909,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.1
-  m_fontSizeBase: 42.1
+  m_fontSize: 25.06
+  m_fontSizeBase: 25.06
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1944,7 +1945,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -394.639, y: 0, z: -228.57257, w: 0}
+  m_margin: {x: -673.9198, y: 0, z: -352.42758, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2263,8 +2264,8 @@ Transform:
   m_GameObject: {fileID: 1772555125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -1016, z: -2}
-  m_LocalScale: {x: 175, y: 175, z: 175}
+  m_LocalPosition: {x: -112.93, y: -905.91, z: -2}
+  m_LocalScale: {x: 240.1875, y: 236.25, z: 175}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1343571320}
@@ -2341,7 +2342,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2370,7 +2371,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -269.75214, w: -410.0816}
+  m_margin: {x: 0, y: 0, z: 2.242859, w: -410.0816}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2400,8 +2401,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 120}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 36, y: 40}
+  m_SizeDelta: {x: 644.42, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1884374025
 PrefabInstance:

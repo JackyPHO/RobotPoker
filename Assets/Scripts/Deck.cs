@@ -74,15 +74,15 @@ public class Deck : MonoBehaviour
 
     public void takeFive()
     {
-        int offset = -300;
+        int offset = -600;
 
         for (int i = 0; i < 5; i++)
         {
             GameObject tmpCard = Instantiate(UsedDeck[0], myCanvas.transform);
             Hand.Add(tmpCard);
             tmpCard.transform.localPosition = new Vector3(offset, -400, -2);
-            tmpCard.transform.localScale = new Vector3(15f, 15f, 1f);
-            offset += 200;
+            tmpCard.transform.localScale = new Vector3(20, 20, 1f);
+            offset += 250;
 
             UsedDeck.RemoveAt(0);
         }
@@ -122,7 +122,7 @@ public class Deck : MonoBehaviour
                 SavedCards.Add(tmp_card);
 
                 tmp_card.transform.position = new Vector2(found.transform.position.x, found.transform.position.y);
-                tmp_card.transform.localScale = new Vector3(15f, 15f, 1f);
+                tmp_card.transform.localScale = new Vector3(20f, 20f, 1f);
 
             }
 
@@ -142,27 +142,27 @@ public class Deck : MonoBehaviour
                 {
                     if(check.collider.gameObject == Hand[0])
                     {
-                        cardSelector.transform.localPosition = new Vector2(-300, -400);
+                        cardSelector.transform.localPosition = new Vector2(-600, -400);
                         selectedCard = Hand[0];
                     }
                     else if (check.collider.gameObject == Hand[1])
                     {
-                        cardSelector.transform.localPosition = new Vector2(-100, -400);
+                        cardSelector.transform.localPosition = new Vector2(-350, -400);
                         selectedCard = Hand[1];
                     }
                     else if (check.collider.gameObject == Hand[2])
                     {
-                        cardSelector.transform.localPosition = new Vector2(100, -400);
+                        cardSelector.transform.localPosition = new Vector2(-100, -400);
                         selectedCard = Hand[2];
                     }
                     else if (check.collider.gameObject == Hand[3])
                     {
-                        cardSelector.transform.localPosition = new Vector2(300, -400);
+                        cardSelector.transform.localPosition = new Vector2(150, -400);
                         selectedCard = Hand[3];
                     }
                     else if (check.collider.gameObject == Hand[4])
                     {
-                        cardSelector.transform.localPosition = new Vector2(500, -400);
+                        cardSelector.transform.localPosition = new Vector2(400, -400);
                         selectedCard = Hand[4];
                     }
                 }

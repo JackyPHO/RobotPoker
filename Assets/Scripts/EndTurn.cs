@@ -24,28 +24,26 @@ public class EndTurn : MonoBehaviour
         if (turn < 2 && !skip)
         {
             deck.DrawHand();
-        } 
+
+        }
         else
         {
             deck.battleMode = true;
             //call battle manager
             batt.SetPlayer(playerTemplate);
             batt.SetNPC(deck.createNPCRobot(deck.NPCDeck));
-            string win = batt.BeginBattle();
-            if (win == "player")
-            {
+            StartCoroutine(batt.BeginBattle());
 
-            }
-            else
-            {
-
-            }
             endButton.GetComponentInChildren<TMP_Text>().text = "Next round";
             endButton.onClick.RemoveAllListeners();
             endButton.GetComponent<Button>().onClick.AddListener(() => { DoResetStuff(); });
 
         }
         turn += 1;
+        if (turn == 2)
+        {
+            endButton.GetComponentInChildren<TMP_Text>().text = "Begin Battle!";
+        }
     }
 
     void DoResetStuff()

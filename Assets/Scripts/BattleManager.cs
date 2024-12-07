@@ -74,7 +74,7 @@ public class BattleManager : MonoBehaviour
         // ---------- Battle calcs ----------
 
         string whoIsFaster = determineFastest(in player, in npc, out Template fastest, out Template slowest);
-        string whoIsSlower = whoIsFaster == "player" ? "npc" : "player";
+        string whoIsSlower = whoIsFaster == "Player" ? "Joe" : "Player";
         int tmpSpeed = fastest.Speed;
         int extraTurns = 0;
         while (tmpSpeed > slowest.Speed)
@@ -130,13 +130,13 @@ public class BattleManager : MonoBehaviour
         {
             fastest = player;
             slowest = npc;
-            return "player";
+            return "Player";
         }
         else
         {
             fastest = npc;
             slowest = player;
-            return "npc";
+            return "Joe";
         }
     }
 }

@@ -20,6 +20,7 @@ public class Deck : MonoBehaviour
     [SerializeField] GameObject cardSelector;
 
     private GameObject selectedCard;
+    private GameObject checkCard;
 
     [SerializeField] Template playerTemplate;
     [SerializeField] Template npcRobot;
@@ -133,31 +134,38 @@ public class Deck : MonoBehaviour
     {
         if (!battleMode)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetMouseButtonDown(0))
             {
-                cardSelector.transform.localPosition = new Vector2(-300, -400);
-                selectedCard = Hand[0];
-                Debug.Log("card is:" + selectedCard.GetComponent<Card>().name);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                cardSelector.transform.localPosition = new Vector2(-100, -400);
-                selectedCard = Hand[1];
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                cardSelector.transform.localPosition = new Vector2(100, -400);
-                selectedCard = Hand[2];
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                cardSelector.transform.localPosition = new Vector2(300, -400);
-                selectedCard = Hand[3];
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                cardSelector.transform.localPosition = new Vector2(500, -400);
-                selectedCard = Hand[4];
+                Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D check = Physics2D.Raycast(mouse, Vector2.zero);
+                if (check.collider != null && check.collider.gameObject.CompareTag("Card"))
+                {
+                    if(check.collider.gameObject == Hand[0])
+                    {
+                        cardSelector.transform.localPosition = new Vector2(-300, -400);
+                        selectedCard = Hand[0];
+                    }
+                    else if (check.collider.gameObject == Hand[1])
+                    {
+                        cardSelector.transform.localPosition = new Vector2(-100, -400);
+                        selectedCard = Hand[1];
+                    }
+                    else if (check.collider.gameObject == Hand[2])
+                    {
+                        cardSelector.transform.localPosition = new Vector2(100, -400);
+                        selectedCard = Hand[2];
+                    }
+                    else if (check.collider.gameObject == Hand[3])
+                    {
+                        cardSelector.transform.localPosition = new Vector2(300, -400);
+                        selectedCard = Hand[3];
+                    }
+                    else if (check.collider.gameObject == Hand[4])
+                    {
+                        cardSelector.transform.localPosition = new Vector2(500, -400);
+                        selectedCard = Hand[4];
+                    }
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.E) && selectedCard != null && selectedCard != NO_CARD)

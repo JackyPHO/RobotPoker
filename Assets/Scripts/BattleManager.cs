@@ -10,6 +10,8 @@ public class BattleManager : MonoBehaviour
     private Template player;
     private Template npc;
 
+    [SerializeField] BettingScript MoneyMGR;
+
     [SerializeField] TMP_Text playerDisplay;
     [SerializeField] TMP_Text npcDisplay;
     [SerializeField] TMP_Text turnTracker;
@@ -17,7 +19,7 @@ public class BattleManager : MonoBehaviour
 
     private AudioSource ourAudioSource;
 
-    [SerializeField]
+    [SerializeField] 
     private AudioClip Slash;
     [SerializeField]
     private AudioClip Woosh;
@@ -71,6 +73,7 @@ public class BattleManager : MonoBehaviour
         turnTracker.text = "";
     }
 
+
     public IEnumerator BeginBattle()
     {
         // ---------- Battle calcs ----------
@@ -104,6 +107,7 @@ public class BattleManager : MonoBehaviour
                     turnTracker.text = trackerText;
                     ourAudioSource.PlayOneShot(Clang);
                     yield return new WaitForSeconds(0.3f);
+                    declareWinner(whoIsFaster);
                     yield break;
                 }
 
@@ -120,6 +124,7 @@ public class BattleManager : MonoBehaviour
                 turnTracker.text = trackerText;
                 ourAudioSource.PlayOneShot(Hit);
                 yield return new WaitForSeconds(0.3f);
+                declareWinner(whoIsSlower);
                 yield break;
             }
             yield return new WaitForSeconds(0.5f);
@@ -143,6 +148,18 @@ public class BattleManager : MonoBehaviour
             fastest = npc;
             slowest = player;
             return "Joe";
+        }
+    }
+
+    void declareWinner(string who)
+    {
+        if (who == "Player")
+        {
+            MoneyMGR.Win();
+        }
+        else
+        {
+            MoneyMGR.Lose();
         }
     }
 }

@@ -25,6 +25,8 @@ public class Deck : MonoBehaviour
     [SerializeField] Template playerTemplate;
     [SerializeField] Template npcRobot;
 
+    [SerializeField] BattleManager battMGR;
+
     public Canvas myCanvas;
 
     private AudioSource audioData;
@@ -140,7 +142,7 @@ public class Deck : MonoBehaviour
                 RaycastHit2D check = Physics2D.Raycast(mouse, Vector2.zero);
                 if (check.collider != null && check.collider.gameObject.CompareTag("Card"))
                 {
-                    if(check.collider.gameObject == Hand[0])
+                    if (check.collider.gameObject == Hand[0])
                     {
                         cardSelector.transform.localPosition = new Vector2(-600, -400);
                         selectedCard = Hand[0];
@@ -192,6 +194,7 @@ public class Deck : MonoBehaviour
                     selectedCard.transform.position = new Vector2(found.transform.position.x, found.transform.position.y);
                     selectedCard = null;
                     cardSelector.transform.position = new Vector2(10000, 100000);
+                    battMGR.SetPlayer(playerTemplate);
                 }
             }
         }

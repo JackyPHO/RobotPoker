@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System.Threading;
 
 public class BattleManager : MonoBehaviour
 {
@@ -15,6 +16,25 @@ public class BattleManager : MonoBehaviour
     [SerializeField] TMP_Text turnTracker;
     private string trackerText;
 
+    private AudioSource ourAudioSource;
+
+    [SerializeField]
+    private AudioClip Slash;
+    [SerializeField]
+    private AudioClip Woosh;
+    [SerializeField]
+    private AudioClip Bang;
+    [SerializeField]
+    private AudioClip Clang;
+    [SerializeField]
+    private AudioClip Dong;
+    [SerializeField]
+    private AudioClip Hit;
+
+
+    void Start(){
+        ourAudioSource = GetComponent<AudioSource>();
+    }
 
     public void SetPlayer(Template t)
     {
@@ -64,6 +84,18 @@ public class BattleManager : MonoBehaviour
         }
         turnTracker.text = "" + whoIsFaster + " moves first.";
         int fHP = fastest.Health, sHP = slowest.Health;
+        ourAudioSource.PlayOneShot(Slash);
+        Thread.Sleep(300);
+        ourAudioSource.PlayOneShot(Bang);
+        Thread.Sleep(300);
+        ourAudioSource.PlayOneShot(Clang);
+        Thread.Sleep(300);
+        ourAudioSource.PlayOneShot(Hit);
+        Thread.Sleep(300);
+        ourAudioSource.PlayOneShot(Woosh);
+        Thread.Sleep(300);
+        ourAudioSource.PlayOneShot(Dong);
+        Thread.Sleep(500);
         while (fHP > 0 && sHP > 0)
         {
             for (int i = 0; i < extraTurns; i++)

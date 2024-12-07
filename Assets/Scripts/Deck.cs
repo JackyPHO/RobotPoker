@@ -26,6 +26,8 @@ public class Deck : MonoBehaviour
 
     public Canvas myCanvas;
 
+    private AudioSource audioData;
+
     void Start()
     {
         NPCDeck = new List<GameObject>(FullDeck);
@@ -173,6 +175,8 @@ public class Deck : MonoBehaviour
                 {
                     Debug.Log("found a place for the card to go.");
                     playerTemplate.SetCard(selectedCard, found);
+                    audioData = GetComponent<AudioSource>();
+                    audioData.Play();
                     int index = Hand.IndexOf(selectedCard);
                     Hand[index] = NO_CARD;
                     SavedCards.Add(selectedCard);

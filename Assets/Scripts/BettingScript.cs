@@ -17,6 +17,7 @@ public class BettingScript : MonoBehaviour
         playerMoney = 100;
         pot = 0;
         MoneyText.text = "$" + playerMoney;
+        Bet(5);
     }
 
     // Update is called once per frame

@@ -20,14 +20,13 @@ public class EndTurn : MonoBehaviour
         endButton.GetComponent<Button>().onClick.AddListener(() => { TaskOnClick(false); });
         foldButton.GetComponent<Button>().onClick.AddListener(() => { Fold(); });
         instaLockinButton.GetComponent<Button>().onClick.AddListener(() => { TaskOnClick(true); });
-        moneyMGR.Bet(2);
     }
 
     void TaskOnClick(bool skip)
     {
         if (turn < 2 && !skip)
         {
-            moneyMGR.Bet(2);
+            moneyMGR.Bet(5);
             deck.DrawHand();
             turn += 1;
             if (turn == 2)
@@ -37,9 +36,9 @@ public class EndTurn : MonoBehaviour
         }
         else if (turn == 3 || skip)
         {
-            moneyMGR.Bet(5);
-            int npcDraws = Random.Range(0, 4);
-            moneyMGR.NPCBet(7 + 2 * npcDraws);
+            moneyMGR.Bet(10);
+            int npcDraws = Random.Range(0, 3);
+            moneyMGR.NPCBet(15 + 5 * npcDraws);
             deck.battleMode = true;
             //call battle manager
             batt.SetPlayer(playerTemplate);
@@ -74,7 +73,7 @@ public class EndTurn : MonoBehaviour
         deck.ResetDeck();
         deck.DrawHand();
         turn = 0;
-        moneyMGR.Bet(2);
+        moneyMGR.Bet(5);
         batt.clearBattleText();
         batt.SetPlayer(null);
         batt.SetNPC(null);

@@ -10,16 +10,19 @@ public class BattleManager : MonoBehaviour
     private Template player;
     private Template npc;
 
+    private List<string> npcNames = new List<string>();
+
     [SerializeField] BettingScript MoneyMGR;
 
     [SerializeField] TMP_Text playerDisplay;
     [SerializeField] TMP_Text npcDisplay;
     [SerializeField] TMP_Text turnTracker;
-    private string trackerText;
+    private String trackerText;
+    private string currNPC;
 
     private AudioSource ourAudioSource;
 
-    [SerializeField] 
+    [SerializeField]
     private AudioClip Slash;
     [SerializeField]
     private AudioClip Woosh;
@@ -38,6 +41,11 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         ourAudioSource = GetComponent<AudioSource>();
+        npcNames.Add("Bob");
+        npcNames.Add("Joe");
+        npcNames.Add("DeathBot");
+        npcNames.Add("Evil Wizard");
+        npcNames.Add("the mechanism");
     }
 
     public void SetPlayer(Template t)
@@ -56,14 +64,16 @@ public class BattleManager : MonoBehaviour
     public void SetNPC(Template t)
     {
         this.npc = t;
+        currNPC = npcNames[UnityEngine.Random.Range(0, npcNames.Count)];
+
         if (t)
         {
-            npcDisplay.text = "Joe:\n" + "hp: " + npc.Health + "\nattack: " + npc.Attack + "\nSpeed: " + npc.Speed;
+            npcDisplay.text = currNPC + ":\n" + "hp: " + npc.Health + "\nattack: " + npc.Attack + "\nSpeed: " + npc.Speed;
 
         }
         else
         {
-            npcDisplay.text = "Joe";
+            npcDisplay.text = currNPC;
 
         }
 
@@ -77,9 +87,8 @@ public class BattleManager : MonoBehaviour
     public IEnumerator BeginBattle()
     {
         // ---------- Battle calcs ----------
-
         string whoIsFaster = determineFastest(in player, in npc, out Template fastest, out Template slowest);
-        string whoIsSlower = whoIsFaster == "Player" ? "Joe" : "Player";
+        string whoIsSlower = whoIsFaster == "Player" ? currNPC : "Player";
         int tmpSpeed = fastest.Speed;
         int extraTurns = 0;
         while (tmpSpeed >= slowest.Speed)
@@ -92,7 +101,7 @@ public class BattleManager : MonoBehaviour
 
         ourAudioSource.PlayOneShot(Bell);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         while (fHP > 0 && sHP > 0)
         {
             for (int i = 0; i < extraTurns; i++)
@@ -100,34 +109,34 @@ public class BattleManager : MonoBehaviour
                 turnTracker.text = turnTracker.text + "\n" + whoIsFaster + " attacked for " + fastest.Attack;
                 sHP -= fastest.Attack;
                 ourAudioSource.PlayOneShot(Slash);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1f);
                 if (sHP <= 0)
                 {
                     trackerText = turnTracker.text + "\nwinner = " + whoIsFaster;
                     turnTracker.text = trackerText;
                     ourAudioSource.PlayOneShot(Clang);
-                    yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(1f);
                     declareWinner(whoIsFaster);
                     yield break;
                 }
 
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             turnTracker.text = turnTracker.text + "\n" + whoIsSlower + " attacked for " + slowest.Attack;
             fHP -= slowest.Attack;
             ourAudioSource.PlayOneShot(Bang);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(1f);
             if (fHP <= 0)
             {
 
                 trackerText = turnTracker.text + "\nwinner = " + whoIsSlower;
                 turnTracker.text = trackerText;
                 ourAudioSource.PlayOneShot(Hit);
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(1f);
                 declareWinner(whoIsSlower);
                 yield break;
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
 
         }
 
@@ -147,7 +156,7 @@ public class BattleManager : MonoBehaviour
         {
             fastest = npc;
             slowest = player;
-            return "Joe";
+            return currNPC;
         }
     }
 

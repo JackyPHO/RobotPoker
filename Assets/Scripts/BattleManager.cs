@@ -46,7 +46,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            playerDisplay.text = "player stats here";
+            playerDisplay.text = "Player";
         }
     }
     public void SetNPC(Template t)
@@ -54,12 +54,12 @@ public class BattleManager : MonoBehaviour
         this.npc = t;
         if (t)
         {
-            npcDisplay.text = "NPC:\n" + "hp: " + npc.Health + "\nattack: " + npc.Attack + "\nSpeed: " + npc.Speed;
+            npcDisplay.text = "Joe:\n" + "hp: " + npc.Health + "\nattack: " + npc.Attack + "\nSpeed: " + npc.Speed;
 
         }
         else
         {
-            npcDisplay.text = "npc stats here";
+            npcDisplay.text = "Joe";
 
         }
 
